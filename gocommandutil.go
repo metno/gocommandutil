@@ -38,7 +38,9 @@ func ExecuteCmd(timeoutsecs int,
 	scanner := bufio.NewScanner(stdOut)
 	go func() {
 		for scanner.Scan() {
-			stdoutHandler(scanner.Text())
+			if stdoutHandler != nil {
+				stdoutHandler(scanner.Text())
+			}
 		}
 	}()
 
@@ -52,7 +54,9 @@ func ExecuteCmd(timeoutsecs int,
 	stdErrScanner := bufio.NewScanner(stdErr)
 	go func() {
 		for stdErrScanner.Scan() {
-			stdoutHandler(stdErrScanner.Text())
+			if stderrHandler != nil {
+				stderrHandler(stdErrScanner.Text())
+			}
 		}
 	}()
 
