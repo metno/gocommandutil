@@ -12,7 +12,7 @@ import (
 // here successively when I need them
 
 // ExecuteCmd execute command with time out
-// stdoutHandler and stderrHandler is called on each line of output
+// stdoutHandler and stderrHandler is called on each line of output (If not nil)
 func ExecuteCmd(timeoutsecs int,
 	stdoutHandler func(string) error,
 	stderrHandler func(string) error,
